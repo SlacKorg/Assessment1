@@ -1,0 +1,72 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Less_Complicated_Pokemon_Tourney
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Please enter the names of up to 5 Pokemon. Press ENTER when finished.");
+
+            //The program works. Used Sam and Zola's coding snippets. Zola's variable tip was necessary to run program.
+
+           
+
+            //Zola's slack post helped for array value issue. Had to use var 
+            //(trick console into not knowing true identity of i value?)
+            // string [] names = new string[] { "name" }; = 1 value in array
+            //var names = new string[5];
+            
+
+            var Names = new string[5];
+
+            for (int i = 0; i < 5; i++)
+            {
+                var ListName = Console.ReadLine();
+                Names[i] = ListName;
+
+                if (ListName == "" && i == 0)
+                {
+                    Console.WriteLine("Come back when you're ready.");
+                    Console.ReadLine();
+                    return;
+                }
+                if (ListName == "" && i < 5)
+                {
+                    
+                    break; //empty spaces still win...
+                }
+            }
+            Console.ReadKey();
+
+            Console.WriteLine("Let the battles begin...");
+            Console.ReadLine();
+
+            string winName = Names[new Random().Next(0, Names.Length)];
+            
+
+            Console.WriteLine("This game's winner is..." + winName + "!");
+            Console.ReadLine();
+
+            Names = Names.Where(index => index != winName).ToArray();
+            Console.WriteLine("The losers.....\r\n");
+            foreach (string Name in Names)
+            {
+                Console.WriteLine(Name);
+            }
+            Console.ReadLine();
+
+           
+          
+
+
+
+
+
+        }
+    }
+}
